@@ -1,9 +1,8 @@
 package fibonacci;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.Callable;
 
 public class Fibonacci implements Runnable {
     private int n;
@@ -35,9 +34,17 @@ public class Fibonacci implements Runnable {
     public void run() {
 
         buildFibonacci();
-        System.out.println(listOfFibonacciNumbers);
-        System.out.println("sum: " + getSumOfFibonacciNumbers() + "  " + Thread.currentThread().getName());
-
+        System.out.println(listOfFibonacciNumbers + "\tsum: " + getSumOfFibonacciNumbers() + "  " + Thread.currentThread().getName());
 
     }
+
+    public class FibonacciCall implements Callable {
+
+        @Override
+        public Long call() {
+            buildFibonacci();
+            return getSumOfFibonacciNumbers();
+        }
+    }
 }
+

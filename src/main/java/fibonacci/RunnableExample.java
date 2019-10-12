@@ -1,6 +1,6 @@
 package fibonacci;
 
-public class Main {
+public class RunnableExample {
     public static void main(String[] args) throws InterruptedException {
         for (int i = 10; i < 20; i++) {
             Thread t = new Thread(new Fibonacci(i));
